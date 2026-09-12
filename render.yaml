@@ -1,9 +1,10 @@
 services:
   - type: web
-    name: ledger-lens
+    name: document-intelligence-platform
     env: python
     buildCommand: pip install -r requirements.txt && apt-get update && apt-get install -y tesseract-ocr
     startCommand: uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v1/health
     envVars:
       - key: DATABASE_PATH
         value: /var/data/documents.db
