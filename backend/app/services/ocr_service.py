@@ -92,7 +92,7 @@ def _extract_pdf(content: bytes) -> ExtractedText:
 
         # If native text is empty or minimal, render the page for Tesseract OCR.
         ocr_used = True
-        pix = page.get_pixmap(dpi=200)
+        pix = page.get_pixmap(dpi=150)
         img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
         ocr_page = _run_tesseract_on_image(_preprocess_image(img))
         pages_text.append(ocr_page.text)
@@ -128,7 +128,12 @@ def _run_tesseract_on_image(image: Image.Image) -> OCRPage:
         import pytesseract
         from pytesseract import Output
 
-        data = pytesseract.image_to_data(image, config="--oem 3 --psm 6", output_type=Output.DICT)
+        data = pytesseract.image_to_data(
+            image,
+            config="--oem 3 --psm 6",
+            output_type=Output.DICT,
+            timeout=45,
+        )
     except Exception:
         logger.exception("Tesseract fallback failed.")
         return OCRPage(text="", confidence=0.0, words=[])
