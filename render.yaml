@@ -1,9 +1,8 @@
 services:
   - type: web
     name: document-intelligence-platform
-    env: python
-    buildCommand: pip install -r requirements.txt && apt-get update && apt-get install -y tesseract-ocr
-    startCommand: uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT
+    env: docker
+    dockerfilePath: ./Dockerfile
     healthCheckPath: /api/v1/health
     envVars:
       - key: DATABASE_PATH
@@ -12,8 +11,6 @@ services:
         value: "20"
       - key: OCR_LANGUAGE
         value: eng
-      - key: PYTHON_VERSION
-        value: 3.12.10
     disk:
       name: document-intelligence-platform-data
       mountPath: /var/data
