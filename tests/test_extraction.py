@@ -30,3 +30,33 @@ S = 6% 102.36 6.14"""
     assert data["total_amount"]["value"] == 108.50
     assert data["cash_paid"]["value"] == 150.00
     assert data["change"]["value"] == 41.50
+
+
+def test_column_invoice_extracts_parties_and_summary_totals():
+    text = """INVOICE
+INVOICE NO. 118
+DATE: March 9, 2022
+BILL FROM
+BLUE STREAK ELECTRONICS
+30 Moyal Court
+BILL TO
+GEONICS LTD
+1745 Meyers Drive
+DESCRIPTION QUANTITY PRICE TOTAL
+3M Scotchcast Electrical Resin 2 346.00 346.00
+3M DP460 EG Epoxy Adhesive 4 226.00 226.00
+Freight AE Blake Montreal to Aerospace Metal 6 136.00 136.00
+Lead-time is a mere estimate 8 96.00 96.00
+Subtotal 804
+Sales Tax 8% 63.47
+S&H 50
+Total Due 916.47"""
+    data = extract_document("invoice", text, [text])
+
+    assert data["invoice_number"]["value"] == "118"
+    assert data["invoice_date"]["value"] == "2022-03-09"
+    assert data["vendor_name"]["value"] == "BLUE STREAK ELECTRONICS"
+    assert data["customer_name"]["value"] == "GEONICS LTD"
+    assert data["subtotal"]["value"] == 804.0
+    assert data["tax_amount"]["value"] == 63.47
+    assert data["total_amount"]["value"] == 916.47

@@ -451,7 +451,7 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
     if subtotal_val_from_gst is not None:
         subtotal_val, subtotal_ev = subtotal_val_from_gst, gst_summary
     for line in lines:
-        m_sub = re.search(r'(?:subtotal|net\s*amt|total\s*excluding\s*gst)[:\s]*\$?([\d,]+\.\d{2})', line, re.I)
+        m_sub = re.search(r'(?:subtotal|net\s*amt|total\s*excluding\s*gst)[:\s]*\$?([\d,]+(?:\.\d{1,2})?)', line, re.I)
         if m_sub:
             try:
                 v = float(m_sub.group(1).replace(',', ''))

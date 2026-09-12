@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-green)](https://fastapi.tiangolo.com/)
-[![EasyOCR](https://img.shields.io/badge/OCR-EasyOCR-orange)](https://github.com/JaidedAI/EasyOCR)
+[![Tesseract](https://img.shields.io/badge/OCR-Tesseract-orange)](https://github.com/tesseract-ocr/tesseract)
 
 An AI-powered document extraction and validation platform supporting **Invoices**, **Balance Sheets**, **Profit & Loss Statements**, and **Cash Flow Statements**.
 
@@ -36,14 +36,14 @@ The application is a single Render web service, so the frontend and backend base
 - [ ] No secrets are stored in the repository; use `.env` locally and Render environment variables in production.
 - [ ] README, architecture diagram, deployment URLs, and GitHub URL are included.
 
-To ensure high stability and eliminate complex native engine installations (like Tesseract binaries), this platform uses **EasyOCR** (built on PyTorch deep learning models) and **PyMuPDF** (`fitz`).
+For predictable CPU deployment, this platform uses **Tesseract OCR** and **PyMuPDF** (`fitz`).
 
 ---
 
 ## 🌟 Features
 
 - **Document Validation**: Input control for PDF, JPG, PNG files, empty/corrupted check, and 3-page limit enforcement.
-- **Deep-Learning OCR Engine**: EasyOCR spatial text extraction with bounding box layout sorting.
+- **OCR Engine**: Tesseract spatial text extraction with bounding-box layout reconstruction.
 - **Complete Field & Table Extraction**:
   - **Invoice**: Invoice number, date, vendor, customer, subtotal, tax, total, currency, and line items table.
   - **Balance Sheet**: Assets, liabilities, equity, total capital & liabilities, comparative periods, and breakdown items.
@@ -145,7 +145,7 @@ Processed results are serialized as JSON in SQLite through the repository layer.
 
 ## Known Limitations
 
-- OCR and first-time EasyOCR model loading can be slow and memory-intensive on small instances.
+- Tesseract accuracy depends on scan quality, contrast, language, and document layout; unusual layouts may need template-specific parsing rules.
 - Parsing is rule-based and optimized for the supplied document layouts; unusual layouts may produce missing fields or lower confidence.
 - The current SQLite design is appropriate for a single service instance, not high-volume multi-instance writes.
 - Uploads are limited to 20 MB and three pages per document.

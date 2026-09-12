@@ -56,7 +56,7 @@ class ExtractedText:
 
 def extract_text(content: bytes, file_type: str) -> ExtractedText:
     """
-    Extract text from PDF or image using EasyOCR and PyMuPDF.
+    Extract text from PDF or image using Tesseract and PyMuPDF.
     """
     if not content:
         raise ValueError("Empty document received.")
@@ -124,7 +124,7 @@ def _run_tesseract_on_image(image: Image.Image) -> OCRPage:
         import pytesseract
         from pytesseract import Output
 
-        data = pytesseract.image_to_data(image, config="--oem 3 --psm 6", output_type=Output.DICT)
+        data = pytesseract.image_to_data(image, config="--oem 3 --psm 11", output_type=Output.DICT)
     except Exception:
         logger.exception("Tesseract fallback failed.")
         return OCRPage(text="", confidence=0.0, words=[])
@@ -155,7 +155,19 @@ def _run_tesseract_on_image(image: Image.Image) -> OCRPage:
         lines.setdefault((word.block_num, word.par_num, word.line_num), []).append(word)
         confidences.append(confidence)
 
-    text_lines = [" ".join(word.text for word in sorted(line, key=lambda item: item.left)) for line in lines.values()]
+    text_lines = []
+    for line in lines.values():
+        ordered = sorted(line, key=lambda item: item.left)
+        chunks = [[ordered[0]]] if ordered else []
+        for word in ordered[1:]:
+            previous = chunks[-1][-1]
+            gap = word.left - previous.right
+            # Preserve invoice columns such as Bill From / Bill To in the header.
+            if ordered[0].top < image.height * 0.55 and gap > max(120, image.width * 0.18):
+                chunks.append([word])
+            else:
+                chunks[-1].append(word)
+        text_lines.extend(" ".join(word.text for word in chunk) for chunk in chunks)
     return OCRPage(
         text="\n".join(text_lines),
         confidence=round(sum(confidences) / len(confidences), 2) if confidences else 0.0,
