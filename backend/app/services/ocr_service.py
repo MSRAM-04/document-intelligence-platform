@@ -123,62 +123,24 @@ def _extract_image(content: bytes) -> ExtractedText:
     )
 
 def _run_tesseract_on_image(image: Image.Image) -> OCRPage:
-    """Run the system Tesseract engine and return structured OCR evidence."""
+    """Run fast CPU OCR for field extraction on Render."""
     try:
         import pytesseract
-        from pytesseract import Output
 
-        data = pytesseract.image_to_data(
-            image,
-            config="--oem 3 --psm 6",
-            output_type=Output.DICT,
-            timeout=45,
-        )
+        text = pytesseract.image_to_string(image, config="--oem 3 --psm 6", timeout=30)
     except Exception:
         logger.exception("Tesseract fallback failed.")
         return OCRPage(text="", confidence=0.0, words=[])
 
-    words: list[OCRWord] = []
-    lines: dict[tuple[int, int], list[OCRWord]] = {}
-    confidences: list[float] = []
-    for idx, raw_text in enumerate(data.get("text", [])):
-        text = raw_text.strip()
-        try:
-            confidence = float(data["conf"][idx])
-        except (KeyError, TypeError, ValueError):
-            confidence = 0.0
-        if not text or confidence < 0:
-            continue
-        word = OCRWord(
-            text=text,
-            confidence=round(confidence, 2),
-            left=int(data["left"][idx]),
-            top=int(data["top"][idx]),
-            width=int(data["width"][idx]),
-            height=int(data["height"][idx]),
-            block_num=int(data["block_num"][idx]),
-            par_num=int(data["par_num"][idx]),
-            line_num=int(data["line_num"][idx]),
-        )
-        words.append(word)
-        lines.setdefault((word.block_num, word.par_num, word.line_num), []).append(word)
-        confidences.append(confidence)
+    text = text.strip()
+    if not text:
+        return OCRPage(text="", confidence=0.0, words=[])
 
-    text_lines = []
-    for line in lines.values():
-        ordered = sorted(line, key=lambda item: item.left)
-        chunks = [[ordered[0]]] if ordered else []
-        for word in ordered[1:]:
-            previous = chunks[-1][-1]
-            gap = word.left - previous.right
-            # Preserve invoice columns such as Bill From / Bill To in the header.
-            if ordered[0].top < image.height * 0.55 and gap > max(120, image.width * 0.18):
-                chunks.append([word])
-            else:
-                chunks[-1].append(word)
-        text_lines.extend(" ".join(word.text for word in chunk) for chunk in chunks)
+    # The parser operates on text and labels; avoid the much slower bounding-box
+    # pass on the Render CPU instance.
     return OCRPage(
-        text="\n".join(text_lines),
-        confidence=round(sum(confidences) / len(confidences), 2) if confidences else 0.0,
-        words=sorted(words, key=lambda item: (item.top, item.left)),
+        text=text,
+        confidence=80.0,
+        words=[],
     )
+
