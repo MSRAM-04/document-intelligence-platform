@@ -14,9 +14,9 @@ logger = logging.getLogger(__name__)
 # Global cached EasyOCR Reader instance
 _EASYOCR_READER = None
 
-def get_ocr_reader():
+def get_ocr_reader(force: bool = False):
     global _EASYOCR_READER
-    if settings.ocr_engine != "easyocr":
+    if settings.ocr_engine != "easyocr" and not force:
         return None
     if _EASYOCR_READER is None:
         try:
@@ -206,7 +206,7 @@ def _run_easyocr_on_image(image: Image.Image, reader) -> OCRPage:
 
 
 def _run_tesseract_on_image(image: Image.Image) -> OCRPage:
-    """Fallback for environments where EasyOCR weights are unavailable."""
+    """Use Tesseract, then try EasyOCR if the system binary is unavailable."""
     try:
         import pytesseract
         from pytesseract import Output
@@ -214,6 +214,10 @@ def _run_tesseract_on_image(image: Image.Image) -> OCRPage:
         data = pytesseract.image_to_data(image, config="--oem 3 --psm 6", output_type=Output.DICT)
     except Exception:
         logger.exception("Tesseract fallback failed.")
+        reader = get_ocr_reader(force=True)
+        if reader is not None:
+            logger.warning("Using EasyOCR because Tesseract is unavailable.")
+            return _run_easyocr_on_image(image, reader)
         return OCRPage(text="", confidence=0.0, words=[])
 
     words: list[OCRWord] = []
