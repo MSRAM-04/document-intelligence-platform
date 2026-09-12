@@ -12,6 +12,8 @@ services:
         value: "20"
       - key: OCR_LANGUAGE
         value: eng
+      - key: PYTHON_VERSION
+        value: 3.12.10
     disk:
       name: ledger-lens-data
       mountPath: /var/data
