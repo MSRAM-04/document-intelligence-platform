@@ -12,9 +12,9 @@ The application is a single Render web service, so the frontend and backend base
 
 | Required item | URL / value |
 |---|---|
-| Deployed application / frontend URL | `https://document-intelligence-platform-wccy.onrender.com/` |
-| Deployed backend API base URL | `https://document-intelligence-platform-wccy.onrender.com/api/v1` |
-| Swagger/OpenAPI URL | `https://document-intelligence-platform-wccy.onrender.com/docs` |
+| Deployed application / frontend URL | `https://document-intelligence-platform-docker-bezm.onrender.com/` |
+| Deployed backend API base URL | `https://document-intelligence-platform-docker-bezm.onrender.com/api/v1` |
+| Swagger/OpenAPI URL | `https://document-intelligence-platform-docker-bezm.onrender.com/docs` |
 | Public GitHub repository | `https://github.com/MSRAM-04/document-intelligence-platform` |
 | Deployment platform | Render Web Service |
 | Solution presentation | `docs/solution-presentation.pptx` |
