@@ -8,13 +8,13 @@ An AI-powered document extraction and validation platform supporting **Invoices*
 
 ## Submission Links
 
-Fill these values after deployment. The application is a single Render web service, so the frontend and backend base URL are the same.
+The application is a single Render web service, so the frontend and backend base URL are the same. The service hostname below is the Render service created for this repository.
 
 | Required item | URL / value |
 |---|---|
-| Deployed application / frontend URL | `https://<render-service>.onrender.com/` |
-| Deployed backend API base URL | `https://<render-service>.onrender.com/api/v1` |
-| Swagger/OpenAPI URL | `https://<render-service>.onrender.com/docs` |
+| Deployed application / frontend URL | `https://document-intelligence-platform.onrender.com/` |
+| Deployed backend API base URL | `https://document-intelligence-platform.onrender.com/api/v1` |
+| Swagger/OpenAPI URL | `https://document-intelligence-platform.onrender.com/docs` |
 | Public GitHub repository | `https://github.com/MSRAM-04/document-intelligence-platform` |
 | Deployment platform | Render Web Service |
 | Solution presentation | `docs/solution-presentation.pptx` |
