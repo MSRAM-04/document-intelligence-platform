@@ -11,12 +11,16 @@ from app.core.config import settings
 logger = logging.getLogger(__name__)
 
 def _preprocess_image(image: Image.Image) -> Image.Image:
-    """Normalize low-quality receipts without destroying printed characters."""
+    """Normalize scans while keeping OCR within Render request limits."""
     image = ImageOps.exif_transpose(image).convert("L")
     image = ImageOps.autocontrast(image)
     image = image.filter(ImageFilter.MedianFilter(size=3))
-    if max(image.size) < 1800:
-        scale = 1800 / max(image.size)
+    max_dimension = max(image.size)
+    if max_dimension > 2200:
+        scale = 2200 / max_dimension
+        image = image.resize((round(image.width * scale), round(image.height * scale)), Image.Resampling.LANCZOS)
+    elif max_dimension < 1600:
+        scale = 1600 / max_dimension
         image = image.resize((round(image.width * scale), round(image.height * scale)), Image.Resampling.LANCZOS)
     return ImageEnhance.Sharpness(image).enhance(1.5).convert("RGB")
 
@@ -124,7 +128,7 @@ def _run_tesseract_on_image(image: Image.Image) -> OCRPage:
         import pytesseract
         from pytesseract import Output
 
-        data = pytesseract.image_to_data(image, config="--oem 3 --psm 11", output_type=Output.DICT)
+        data = pytesseract.image_to_data(image, config="--oem 3 --psm 6", output_type=Output.DICT)
     except Exception:
         logger.exception("Tesseract fallback failed.")
         return OCRPage(text="", confidence=0.0, words=[])
