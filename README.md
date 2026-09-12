@@ -15,7 +15,7 @@ Fill these values after deployment. The application is a single Render web servi
 | Deployed application / frontend URL | `https://<render-service>.onrender.com/` |
 | Deployed backend API base URL | `https://<render-service>.onrender.com/api/v1` |
 | Swagger/OpenAPI URL | `https://<render-service>.onrender.com/docs` |
-| Public GitHub repository | `https://github.com/<owner>/<repository>` |
+| Public GitHub repository | `https://github.com/MSRAM-04/document-intelligence-platform` |
 | Deployment platform | Render Web Service |
 | Solution presentation | `docs/solution-presentation.pptx` |
 
@@ -70,7 +70,7 @@ To ensure high stability and eliminate complex native engine installations (like
 ### 1. Environment Setup
 ```bash
 # Clone repository
-git clone https://github.com/<owner>/<repository>.git
+git clone https://github.com/MSRAM-04/document-intelligence-platform.git
 cd document-intelligence-platform
 
 # Create virtual environment
