@@ -7,6 +7,7 @@ from typing import List, Optional
 import fitz # PyMuPDF
 import numpy as np
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps
+from app.core.config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -15,6 +16,8 @@ _EASYOCR_READER = None
 
 def get_ocr_reader():
     global _EASYOCR_READER
+    if settings.ocr_engine != "easyocr":
+        return None
     if _EASYOCR_READER is None:
         try:
             import easyocr

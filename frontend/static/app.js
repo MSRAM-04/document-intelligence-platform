@@ -147,10 +147,19 @@ form.addEventListener('submit', async e => {
 
   try {
     const res = await fetch('/api/v1/documents/process', { method: 'POST', body: formData });
-    const data = await res.json();
-    if (!res.ok) {
-      throw new Error(data.detail || data.error?.message || 'Upload & parsing failed');
+    const responseText = await res.text();
+    let data = {};
+    if (responseText.trim()) {
+      try {
+        data = JSON.parse(responseText);
+      } catch {
+        throw new Error(`Server returned invalid JSON (HTTP ${res.status})`);
+      }
     }
+    if (!res.ok) {
+      throw new Error(data.detail || data.error?.message || `Upload & parsing failed (HTTP ${res.status})`);
+    }
+    if (!responseText.trim()) throw new Error(`Server returned an empty response (HTTP ${res.status})`);
     statusMsg.textContent = 'Processing completed!';
     renderResult(data);
     await loadHistory();
