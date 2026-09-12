@@ -197,6 +197,9 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
             if m_lbl:
                 after_text = line[m_lbl.end():].strip()
                 m_code = re.search(r'[:\s#]*([A-Z0-9/\-_]{2,25})', after_text, re.I)
+                if not m_code and lines.index(line) + 1 < len(lines):
+                    next_line = lines[lines.index(line) + 1].strip()
+                    m_code = re.search(r'^([A-Z0-9/\-_]{1,25})$', next_line, re.I)
                 if m_code:
                     cand = m_code.group(1).strip()
                     if re.search(r'\d', cand) and not re.search(r'^(?:date|total|amount|bill|cashier|page|pm|am|usd|inr)$', cand, re.I):
@@ -325,6 +328,8 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
                 for n_idx in range(idx + 1, min(idx + 4, len(lines))):
                     cand = lines[n_idx].strip()
                     if cand and not re.search(r'ship\s*to|invoice|date|tel|fax|email|attn|address|\d{3}\s*main', cand, re.I):
+                        if vendor_val and cand.casefold() == vendor_val.casefold() and n_idx + 1 < len(lines):
+                            cand = lines[n_idx + 1].strip()
                         cust_val = cand
                         cust_ev = cand
                         break
@@ -413,6 +418,11 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
                     tax_val, tax_ev = max(tax_values), line
                     break
 
+    if tax_val is None:
+        tax_val, tax_ev = _extract_number_near_label(
+            lines, r'(?:sales\s*tax|tax|gst)(?:\s*\d+%)?'
+        )
+
 
     # Total Amount
     total_val, total_ev = multi_total, "Header/Value row" if multi_total else None
@@ -439,6 +449,12 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
                 except ValueError: pass
 
     if total_val is None:
+        total_val, total_ev = _extract_number_near_label(
+            lines,
+            r'(?:grand\s*total|total\s*due|total\s*amount|net\s*total|amount\s*due|\btotal\b)'
+        )
+
+    if total_val is None:
         for line in lines:
             m_total_row = re.search(r'^total\s*:?\s*([\d,]+\.\d{2})', line, re.I)
             if m_total_row:
@@ -460,6 +476,11 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
                     subtotal_val, subtotal_ev = v, line
                     break
             except ValueError: pass
+
+    if subtotal_val is None:
+        subtotal_val, subtotal_ev = _extract_number_near_label(
+            lines, r'(?:subtotal|net\s*amt|total\s*excluding\s*gst)'
+        )
 
     if subtotal_val is None and tax_val is not None and total_val is not None:
         candidate = round(total_val - tax_val, 2)
