@@ -131,7 +131,13 @@ The upload response includes `extracted_data`, `validation`, `file_validation`, 
 
 ## OCR, Models, and Confidence
 
-PDF pages are rendered with PyMuPDF and images are read with Pillow. EasyOCR performs OCR using its bundled deep-learning detector/recognizer; no paid external API or LLM is required. The extraction layer applies document-specific parsing rules over OCR text and returns field-level confidence and source evidence where available. Confidence is an extraction signal, not a guarantee of accounting correctness; the separate financial validation checks provide numerical consistency signals.
+PDF pages are rendered with PyMuPDF and images are read with Pillow. The deployed Render configuration uses Tesseract OCR because it is predictable on small instances; EasyOCR remains available by setting `OCR_ENGINE=easyocr`. No paid external API or LLM is required. The extraction layer applies document-specific parsing rules over OCR text and returns field-level confidence and source evidence where available. Confidence is an extraction signal, not a guarantee of accounting correctness; the separate financial validation checks provide numerical consistency signals.
+
+For a manually created Render service, use this exact build command so the Tesseract executable is installed:
+
+```text
+pip install -r requirements.txt && apt-get update && apt-get install -y tesseract-ocr
+```
 
 ## Persistence and Deployment
 
