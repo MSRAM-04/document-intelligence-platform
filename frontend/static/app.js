@@ -70,7 +70,7 @@ function renderResult(data) {
   rawJsonDisplay.textContent = JSON.stringify(data, null, 2);
 
   const extracted = data.extracted_data || {};
-  const fields = Object.entries(extracted).filter(([k]) => k !== 'line_items' && k !== 'periods' && k !== 'raw_text');
+  const fields = Object.entries(extracted).filter(([k]) => k !== 'line_items' && k !== 'periods' && k !== 'raw_text' && k !== 'page_texts');
 
   const fieldsMarkup = fields.map(([key, obj]) => {
     const val = obj?.value;
@@ -83,6 +83,14 @@ function renderResult(data) {
       </div>
     `;
   }).join('');
+
+  const pageTexts = extracted.page_texts || [];
+  const sourceMarkup = pageTexts.length ? `
+    <details class="source-text-panel">
+      <summary>OCR source text (${pageTexts.length} page${pageTexts.length === 1 ? '' : 's'})</summary>
+      <pre class="json-box">${escapeHtml(pageTexts.join('\n\n'))}</pre>
+    </details>
+  ` : '';
 
   // Line items
   const lineItems = extracted.line_items || [];
@@ -128,6 +136,7 @@ function renderResult(data) {
   resultContentBody.innerHTML = `
     <h3 style="font-size: 14px; color: #94a3b8; margin-bottom: 12px; font-weight: 600;">KEY EXTRACTED FIELDS</h3>
     <div class="fields-grid">${fieldsMarkup}</div>
+    ${sourceMarkup}
     ${lineItemsMarkup}
     <h3 style="font-size: 14px; color: #94a3b8; margin-top: 24px; margin-bottom: 12px; font-weight: 600;">FINANCIAL VALIDATION</h3>
     <div class="checks-list">${checksMarkup || '<p style="color: #94a3b8;">No checks performed.</p>'}</div>

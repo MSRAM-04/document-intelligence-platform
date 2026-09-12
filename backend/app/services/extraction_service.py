@@ -347,6 +347,8 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
         currency_val = "MYR"
     elif "€" in full_text or "EUR" in full_text:
         currency_val = "EUR"
+    elif "$" in full_text or re.search(r"\bUSD\b", full_text, re.I):
+        currency_val = "USD"
     elif "£" in full_text or "GBP" in full_text:
         currency_val = "GBP"
 
@@ -422,6 +424,10 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
         tax_val, tax_ev = _extract_number_near_label(
             lines, r'(?:sales\s*tax|tax|gst)(?:\s*\d+%)?'
         )
+
+    shipping_val, shipping_ev = _extract_number_near_label(
+        lines, r'(?:shipping(?:\s+and\s+handling)?|s\s*&\s*h)'
+    )
 
 
     # Total Amount
@@ -503,6 +509,11 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
             change_val = float(re.sub(r"\s+", "", change_match.group(1)).replace(",", ""))
             change_ev = line
 
+    if cash_paid_val is None:
+        cash_paid_val, cash_paid_ev = _extract_number_near_label(lines, r'\bcash\b')
+    if change_val is None:
+        change_val, change_ev = _extract_number_near_label(lines, r'\bchange\b')
+
     # 7. Line Items Table
     line_items = []
     in_items = False
@@ -534,6 +545,7 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
         "currency": _field(currency_val, 0.99, 1, "Currency symbol"),
         "subtotal": _field(subtotal_val, 0.98, 1, subtotal_ev),
         "tax_amount": _field(tax_val, 0.95, 1, tax_ev),
+        "shipping_and_handling": _field(shipping_val, 0.90, 1, shipping_ev),
         "discount": _field(None, 0.0, 1, None),
         "total_amount": _field(total_val, 0.99, 1, total_ev),
         "cash_paid": _field(cash_paid_val, 0.95, 1, cash_paid_ev),

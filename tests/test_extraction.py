@@ -42,7 +42,7 @@ BLUE STREAK ELECTRONICS
 BILL TO
 GEONICS LTD
 1745 Meyers Drive
-DESCRIPTION QUANTITY PRICE TOTAL
+DESCRIPTION QUANTITY PRICE, $ TOTAL, $
 3M Scotchcast Electrical Resin 2 346.00 346.00
 3M DP460 EG Epoxy Adhesive 4 226.00 226.00
 Freight AE Blake Montreal to Aerospace Metal 6 136.00 136.00
@@ -59,6 +59,8 @@ Total Due 916.47"""
     assert data["customer_name"]["value"] == "GEONICS LTD"
     assert data["subtotal"]["value"] == 804.0
     assert data["tax_amount"]["value"] == 63.47
+    assert data["shipping_and_handling"]["value"] == 50.0
+    assert data["currency"]["value"] == "USD"
     assert data["total_amount"]["value"] == 916.47
 
 
