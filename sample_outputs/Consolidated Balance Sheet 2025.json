@@ -1,0 +1,107 @@
+{
+  "document_name": "Consolidated Balance Sheet 2025.pdf",
+  "document_type": "balance_sheet",
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "statement_title": {
+      "value": "CONSOLIDATED BALANCE SHEET",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CONSOLIDATED BALANCE SHEET",
+        "page_number": 1
+      }
+    },
+    "company_name": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "period": {
+      "value": "As at March 3*, 2025",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "As at March 3*, 2025",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": "INR",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "INR",
+        "page_number": 1
+      }
+    },
+    "total_assets": {
+      "value": 4392417.42,
+      "confidence": 0.96,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total 4,392,417.42 4,030,194.26",
+        "page_number": 1
+      }
+    },
+    "total_liabilities": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_equity": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_capital_and_liabilities": {
+      "value": 4392417.42,
+      "confidence": 0.96,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total 4,392,417.42 4,030,194.26",
+        "page_number": 1
+      }
+    },
+    "periods": [
+      "2025",
+      "2024"
+    ],
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "balance_sheet_check",
+        "formula": "total_capital_and_liabilities",
+        "operands": {
+          "total_liabilities": null,
+          "total_equity": null,
+          "total_capital_and_liabilities": 4392417.42
+        },
+        "calculated_value": 4392417.42,
+        "reported_value": 4392417.42,
+        "variance": 0.0,
+        "status": "PASS"
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 79.5,
+    "processed_at": "2026-09-11T16:06:37.001974+00:00",
+    "processing_time_ms": 25810.94
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "document_name": "Consolidated Profit & Loss 2017.pdf",
+  "document_type": "profit_and_loss",
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "statement_title": {
+      "value": "CONSOLIDATED PROFIT AND LOSS STATEMENT",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CONSOLIDATED PROFIT AND LOSS STATEMENT",
+        "page_number": 1
+      }
+    },
+    "company_name": {
+      "value": "HDFC Bank Limited",
+      "confidence": 0.92,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "HDFC BANK",
+        "page_number": 1
+      }
+    },
+    "period": {
+      "value": "For the year ended March 31, 2017",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "For the year ended March 31, 2017",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "revenue": {
+      "value": 861489858.0,
+      "confidence": 0.96,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total 861,489,858 743,732,155",
+        "page_number": 1
+      }
+    },
+    "cost_of_sales": {
+      "value": 380415844.0,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Interest expended 15 380,415,844 340,695,748",
+        "page_number": 1
+      }
+    },
+    "gross_profit": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "operating_expenses": {
+      "value": 207510707.0,
+      "confidence": 0.92,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Operating expenses 16 207,510,707 178,318,808",
+        "page_number": 1
+      }
+    },
+    "operating_profit": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "tax": {
+      "value": 120689285.0,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Provisions and contingencies 120,689,285 96,544,349",
+        "page_number": 1
+      }
+    },
+    "net_profit": {
+      "value": 152874022.0,
+      "confidence": 0.96,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Net profit for the year 152,874,022 128,173,250",
+        "page_number": 1
+      }
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "profit_and_loss_check",
+        "formula": "revenue - cost_of_sales - operating_expenses",
+        "operands": {
+          "revenue": 861489858.0,
+          "cost_of_sales": 380415844.0,
+          "gross_profit": null,
+          "operating_expenses": 207510707.0
+        },
+        "calculated_value": 152874022.0,
+        "reported_value": 152874022.0,
+        "variance": 0.0,
+        "status": "PASS"
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 81.27,
+    "processed_at": "2026-09-11T16:07:29.570793+00:00",
+    "processing_time_ms": 26652.59
+  }
+}

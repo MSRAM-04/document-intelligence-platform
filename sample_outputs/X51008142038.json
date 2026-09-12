@@ -1,0 +1,143 @@
+{
+  "document_name": "X51008142038.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "18291/102/T0163",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "INVOICE NO : 18291/102/T0163",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": "2018-01-28",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "11:S9AM 567640 28-01-18",
+        "page_number": 1
+      }
+    },
+    "vendor_name": {
+      "value": "99 SPEED MarT S/8 (519537-X)",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "99 SPEED MarT S/8 (519537-X)",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "currency": {
+      "value": "MYR",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Currency symbol",
+        "page_number": 1
+      }
+    },
+    "subtotal": {
+      "value": 26.3,
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "$ = 67 26.3J 1.57",
+        "page_number": 1
+      }
+    },
+    "tax_amount": {
+      "value": 1.57,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "$ = 67 26.3J 1.57",
+        "page_number": 1
+      }
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 27.9,
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total Sales (Inclusive GST) RM 27.90",
+        "page_number": 1
+      }
+    },
+    "cash_paid": {
+      "value": 28.0,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CaSH RM 28.00",
+        "page_number": 1
+      }
+    },
+    "change": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": 26.3,
+          "tax_amount": 1.57,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": 27.87,
+        "reported_value": 27.9,
+        "variance": -0.03,
+        "status": "PASS"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": 28.0,
+          "total_amount": 27.9
+        },
+        "calculated_value": 0.10000000000000142,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 70.5,
+    "processed_at": "2026-09-11T16:02:40.832951+00:00",
+    "processing_time_ms": 9365.03
+  }
+}

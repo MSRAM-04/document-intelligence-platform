@@ -1,0 +1,148 @@
+{
+  "document_name": "X51006334741.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "47735",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Invoice No : 47735",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": "2017-01-04",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Date 04 Jan 2017",
+        "page_number": 1
+      }
+    },
+    "vendor_name": {
+      "value": "Segi Cash & Carry Sdn.Rhd",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Segi Cash & Carry Sdn.Rhd",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "currency": {
+      "value": "MYR",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Currency symbol",
+        "page_number": 1
+      }
+    },
+    "subtotal": {
+      "value": 16.42,
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "S @6.02 16,42 0.99",
+        "page_number": 1
+      }
+    },
+    "tax_amount": {
+      "value": 0.99,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "S @6.02 16,42 0.99",
+        "page_number": 1
+      }
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 20.05,
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total Incl. GST:RM 20 . 05",
+        "page_number": 1
+      }
+    },
+    "cash_paid": {
+      "value": 50.0,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash;RM 50. 00",
+        "page_number": 1
+      }
+    },
+    "change": {
+      "value": 29.95,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Change:Rh 29. 95",
+        "page_number": 1
+      }
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": 16.42,
+          "tax_amount": 0.99,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": 17.41,
+        "reported_value": 20.05,
+        "variance": -2.64,
+        "status": "FAIL"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": 50.0,
+          "total_amount": 20.05
+        },
+        "calculated_value": 29.95,
+        "reported_value": 29.95,
+        "variance": 0.0,
+        "status": "PASS"
+      }
+    ],
+    "overall_status": "FAIL",
+    "issues": [
+      "invoice_total_check"
+    ]
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 68.49,
+    "processed_at": "2026-09-11T16:01:59.357529+00:00",
+    "processing_time_ms": 8826.09
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "document_name": "Consolidated Cash Flow Statement 2025.pdf",
+  "document_type": "cash_flow_statement",
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 2,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "statement_title": {
+      "value": "CONSOLIDATED CASH FLOW STATEMENT",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CONSOLIDATED CASH FLOW STATEMENT",
+        "page_number": 1
+      }
+    },
+    "company_name": {
+      "value": "Ijcc",
+      "confidence": 0.92,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Ijcc",
+        "page_number": 1
+      }
+    },
+    "period": {
+      "value": "For the year ended March 31, 2025",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "For the year ended March 31, 2025",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": "INR",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "INR",
+        "page_number": 1
+      }
+    },
+    "operating_cash_flow": {
+      "value": 127241.84,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Net cash flows from operating activities 127,241.84 19,069.34",
+        "page_number": 1
+      }
+    },
+    "investing_cash_flow": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "financing_cash_flow": {
+      "value": 2.38,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash flows from financing activities: | Increase in minorty neres: 2.382.88 1,201.66",
+        "page_number": 1
+      }
+    },
+    "opening_cash": {
+      "value": 228834.51,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash and cash equivalents at the beginning of the year 228,834.51 197,147.81",
+        "page_number": 1
+      }
+    },
+    "net_change_in_cash": {
+      "value": 127241.84,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Net cash flows from operating activities 127,241.84 19,069.34",
+        "page_number": 1
+      }
+    },
+    "closing_cash": {
+      "value": 249947.9,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash and cash equivalents at the end of the year 249,947.90 228,834.51",
+        "page_number": 1
+      }
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "cash_flow_change_check",
+        "formula": "operating_cash_flow + investing_cash_flow + financing_cash_flow",
+        "operands": {
+          "operating_cash_flow": 127241.84,
+          "investing_cash_flow": null,
+          "financing_cash_flow": 2.38
+        },
+        "calculated_value": 127244.22,
+        "reported_value": 127241.84,
+        "variance": 2.38,
+        "status": "PASS"
+      },
+      {
+        "name": "cash_flow_reconciliation_check",
+        "formula": "opening_cash + net_change_in_cash",
+        "operands": {
+          "opening_cash": 228834.51,
+          "net_change_in_cash": 127241.84
+        },
+        "calculated_value": 356076.35,
+        "reported_value": 249947.9,
+        "variance": 106128.45,
+        "status": "FAIL"
+      }
+    ],
+    "overall_status": "FAIL",
+    "issues": [
+      "cash_flow_reconciliation_check"
+    ]
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 75.59,
+    "processed_at": "2026-09-11T16:17:34.337897+00:00",
+    "processing_time_ms": 49002.26
+  }
+}

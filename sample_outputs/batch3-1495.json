@@ -1,0 +1,125 @@
+{
+  "document_name": "batch3-1495.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "298839",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Meld #298839",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "vendor_name": {
+      "value": "Meld #298839",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Meld #298839",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "subtotal": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "tax_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "cash_paid": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "change": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": null,
+          "tax_amount": null,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": null,
+          "total_amount": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "NOT_APPLICABLE",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 86.89,
+    "processed_at": "2026-09-11T16:00:35.136371+00:00",
+    "processing_time_ms": 23107.03
+  }
+}

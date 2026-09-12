@@ -1,0 +1,143 @@
+{
+  "document_name": "X51005663293.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "1802013",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "3,1802013",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": "14-02-2018",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Date 14-02-2018",
+        "page_number": 1
+      }
+    },
+    "vendor_name": {
+      "value": "SWEET FOREST CAFE",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "SWEET FOREST CAFE",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "currency": {
+      "value": "MYR",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Currency symbol",
+        "page_number": 1
+      }
+    },
+    "subtotal": {
+      "value": 28.58,
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "SR (@ 6%) 28.58 1.72 /",
+        "page_number": 1
+      }
+    },
+    "tax_amount": {
+      "value": 1.72,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "SR (@ 6%) 28.58 1.72 /",
+        "page_number": 1
+      }
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 30.3,
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "TOTAL: 30 . 30",
+        "page_number": 1
+      }
+    },
+    "cash_paid": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "change": {
+      "value": 19.7,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CHANGE 19.70",
+        "page_number": 1
+      }
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": 28.58,
+          "tax_amount": 1.72,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": 30.3,
+        "reported_value": 30.3,
+        "variance": -0.0,
+        "status": "PASS"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": null,
+          "total_amount": 30.3
+        },
+        "calculated_value": null,
+        "reported_value": 19.7,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 74.86,
+    "processed_at": "2026-09-11T16:01:06.459879+00:00",
+    "processing_time_ms": 9890.07
+  }
+}

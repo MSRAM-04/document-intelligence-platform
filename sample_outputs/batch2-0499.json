@@ -1,0 +1,139 @@
+{
+  "document_name": "batch2-0499.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "6825",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Invoice#: 6825",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": "2022-11-03",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Invoice date: Nov 03, 2022",
+        "page_number": 1
+      }
+    },
+    "vendor_name": {
+      "value": "TAYLOR CERTIFIED PROCESSING INC",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "TAYLOR CERTIFIED PROCESSING INC 101 B",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "subtotal": {
+      "value": 135.0,
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Subtotal $135.00",
+        "page_number": 1
+      }
+    },
+    "tax_amount": {
+      "value": 12.48,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Sales Tax 8% $12.48",
+        "page_number": 1
+      }
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 157.48,
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total Due $157.48",
+        "page_number": 1
+      }
+    },
+    "cash_paid": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "change": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": 135.0,
+          "tax_amount": 12.48,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": 147.48,
+        "reported_value": 157.48,
+        "variance": -10.0,
+        "status": "FAIL"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": null,
+          "total_amount": 157.48
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "FAIL",
+    "issues": [
+      "invoice_total_check"
+    ]
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 86.72,
+    "processed_at": "2026-09-11T15:58:55.579810+00:00",
+    "processing_time_ms": 26436.97
+  }
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document Intelligence Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="brand">
+        <span class="logo-icon">📊</span>
+        <div>
+          <h1>Document Intelligence Platform</h1>
+          <p class="subtitle">AI-Powered Financial Document Parsing, Validation & Inspection</p>
+        </div>
+      </div>
+      <div class="status-indicator">
+        <span id="health-badge" class="badge online">API Online</span>
+        <a href="/docs" target="_blank" class="docs-link">Swagger API Docs ↗</a>
+      </div>
+    </header>
+
+    <main class="dashboard-grid">
+      <!-- Upload Section -->
+      <section class="card upload-card">
+        <div class="card-header">
+          <h2>Process New Document</h2>
+        </div>
+        <form id="upload-form">
+          <div class="form-group">
+            <label for="document-type">Document Type</label>
+            <select id="document-type" class="form-control">
+              <option value="invoice">Invoice</option>
+              <option value="balance_sheet">Balance Sheet</option>
+              <option value="profit_and_loss">Profit & Loss Statement</option>
+              <option value="cash_flow_statement">Cash Flow Statement</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="file-input" class="dropzone">
+              <input type="file" id="file-input" accept=".pdf,.jpg,.jpeg,.png" required />
+              <div class="dropzone-content">
+                <span class="upload-icon">📁</span>
+                <strong id="file-name-display">Drop document here or click to browse</strong>
+                <small>Supports PDF, JPG, PNG (Max 3 pages)</small>
+              </div>
+            </label>
+          </div>
+
+          <button type="submit" class="btn primary-btn" id="submit-btn">
+            <span>🚀 Scan & Extract Data</span>
+          </button>
+          <div id="upload-message" class="message"></div>
+        </form>
+      </section>
+
+      <!-- Records Section -->
+      <section class="card records-card">
+        <div class="card-header">
+          <h2>Processed Documents</h2>
+          <span id="record-count-badge" class="count-badge">0</span>
+        </div>
+        <div id="records-list" class="records-list">
+          <p class="empty-text">No documents processed yet.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

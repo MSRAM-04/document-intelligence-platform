@@ -1,0 +1,140 @@
+{
+  "document_name": "batch3-1445.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "27408",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "27408 01/29/2020 7783 Newhaven Dr",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": "2020-01-29",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Real Property Management 1901 Lendew St Suite 7 01/29/2020 0001131 82,650.00",
+        "page_number": 1
+      }
+    },
+    "vendor_name": {
+      "value": "Roofing Renovations INC",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Roofing Renovations INC 4917 Old Randleman Rd",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": "Date of Issue Invoice Number Amount Due (USD)",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Billed To Date of Issue Invoice Number Amount Due (USD)",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "subtotal": {
+      "value": 2650.0,
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Subtotal 2,650.00",
+        "page_number": 1
+      }
+    },
+    "tax_amount": {
+      "value": 0.0,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Tax 0.00",
+        "page_number": 1
+      }
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 2650.0,
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total 2,650.00",
+        "page_number": 1
+      }
+    },
+    "cash_paid": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "change": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": 2650.0,
+          "tax_amount": 0.0,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": 2650.0,
+        "reported_value": 2650.0,
+        "variance": 0.0,
+        "status": "PASS"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": null,
+          "total_amount": 2650.0
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 86.03,
+    "processed_at": "2026-09-11T16:00:11.558502+00:00",
+    "processing_time_ms": 24658.83
+  }
+}

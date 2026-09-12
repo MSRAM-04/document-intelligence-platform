@@ -1,0 +1,122 @@
+{
+  "document_name": "Consolidated Profit & Loss 2019.pdf",
+  "document_type": "profit_and_loss",
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "statement_title": {
+      "value": "CONSOLIDATED PROFIT AND LOSS STATEMENT",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CONSOLIDATED PROFIT AND LOSS STATEMENT",
+        "page_number": 1
+      }
+    },
+    "company_name": {
+      "value": "HDFC Bank Limited",
+      "confidence": 0.92,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "HDFC BANK",
+        "page_number": 1
+      }
+    },
+    "period": {
+      "value": "For the year ended March 31, 2019",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "For the year ended March 31, 2019",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "revenue": {
+      "value": 1241077909.0,
+      "confidence": 0.96,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total 1,241,077,909 1.013/44.478",
+        "page_number": 1
+      }
+    },
+    "cost_of_sales": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "gross_profit": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "operating_expenses": {
+      "value": 276947604.0,
+      "confidence": 0.92,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Operating expenses 16 276,947,604 239,272.220",
+        "page_number": 1
+      }
+    },
+    "operating_profit": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "tax": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "net_profit": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "profit_and_loss_check",
+        "formula": "revenue - operating_expenses",
+        "operands": {
+          "revenue": 1241077909.0,
+          "cost_of_sales": null,
+          "gross_profit": null,
+          "operating_expenses": 276947604.0
+        },
+        "calculated_value": 964130305.0,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "NOT_APPLICABLE",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 76.99,
+    "processed_at": "2026-09-11T16:08:24.142725+00:00",
+    "processing_time_ms": 26697.84
+  }
+}

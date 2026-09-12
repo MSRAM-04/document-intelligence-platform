@@ -1,0 +1,138 @@
+{
+  "document_name": "Consolidated Cash Flow Statement 2024.pdf",
+  "document_type": "cash_flow_statement",
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 2,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "statement_title": {
+      "value": "CONSOLIDATED CASH FLOW STATEMENT",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CONSOLIDATED CASH FLOW STATEMENT",
+        "page_number": 1
+      }
+    },
+    "company_name": {
+      "value": "XIn crorc",
+      "confidence": 0.92,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "XIn crorc",
+        "page_number": 1
+      }
+    },
+    "period": {
+      "value": "Current Period",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Current Period",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "USD",
+        "page_number": 1
+      }
+    },
+    "operating_cash_flow": {
+      "value": 19069.34,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Net cash flows from operating activities 19,069.34 20,813.70",
+        "page_number": 1
+      }
+    },
+    "investing_cash_flow": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "financing_cash_flow": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "opening_cash": {
+      "value": 197147.81,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash and cash equivalents at the beginning of the year 197,147.81 155,385.73",
+        "page_number": 1
+      }
+    },
+    "net_change_in_cash": {
+      "value": 19069.34,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Net cash flows from operating activities 19,069.34 20,813.70",
+        "page_number": 1
+      }
+    },
+    "closing_cash": {
+      "value": 228834.51,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash and cash equivalents at the end of the year 228,834.51 197,147.81",
+        "page_number": 1
+      }
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "cash_flow_change_check",
+        "formula": "operating_cash_flow + investing_cash_flow + financing_cash_flow",
+        "operands": {
+          "operating_cash_flow": 19069.34,
+          "investing_cash_flow": null,
+          "financing_cash_flow": null
+        },
+        "calculated_value": 19069.34,
+        "reported_value": 19069.34,
+        "variance": 0.0,
+        "status": "PASS"
+      },
+      {
+        "name": "cash_flow_reconciliation_check",
+        "formula": "opening_cash + net_change_in_cash",
+        "operands": {
+          "opening_cash": 197147.81,
+          "net_change_in_cash": 19069.34
+        },
+        "calculated_value": 216217.15,
+        "reported_value": 228834.51,
+        "variance": -12617.36,
+        "status": "FAIL"
+      }
+    ],
+    "overall_status": "FAIL",
+    "issues": [
+      "cash_flow_reconciliation_check"
+    ]
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 73.47,
+    "processed_at": "2026-09-11T16:16:44.870921+00:00",
+    "processing_time_ms": 50846.59
+  }
+}

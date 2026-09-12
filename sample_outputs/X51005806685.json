@@ -1,0 +1,140 @@
+{
+  "document_name": "X51005806685.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "389772",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CB# 389772 17/01/2018 8.05 53",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": "2018-01-17",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CB# 389772 17/01/2018 8.05 53",
+        "page_number": 1
+      }
+    },
+    "vendor_name": {
+      "value": "ADVANCO COMPANY",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "ADVANCO COMPANY",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "subtotal": {
+      "value": 27.36,
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total amount - tax amount",
+        "page_number": 1
+      }
+    },
+    "tax_amount": {
+      "value": 1.64,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "SR:' 6% 27.36 1.64 29 00",
+        "page_number": 1
+      }
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 29.0,
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Type. Total 29 00",
+        "page_number": 1
+      }
+    },
+    "cash_paid": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "change": {
+      "value": 21.0,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Change 21.00",
+        "page_number": 1
+      }
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": 27.36,
+          "tax_amount": 1.64,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": 29.0,
+        "reported_value": 29.0,
+        "variance": 0.0,
+        "status": "PASS"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": null,
+          "total_amount": 29.0
+        },
+        "calculated_value": null,
+        "reported_value": 21.0,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 77.75,
+    "processed_at": "2026-09-11T16:01:40.826968+00:00",
+    "processing_time_ms": 12153.42
+  }
+}

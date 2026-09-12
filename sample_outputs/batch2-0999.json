@@ -1,0 +1,178 @@
+{
+  "document_name": "batch2-0999.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "DP46O",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "3M DP46O EG Epoxy Adhesive ~ S0m] 2:1 12 kits/case",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": "2022-03-09",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "DATE:\nMarch 9, 2022",
+        "page_number": 1
+      }
+    },
+    "vendor_name": {
+      "value": "BLUE STREAK ELECTRONICS GEONICS LTD",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "BLUE STREAK ELECTRONICS GEONICS LTD",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": "BLUE STREAK ELECTRONICS GEONICS LTD",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "BLUE STREAK ELECTRONICS GEONICS LTD",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "subtotal": {
+      "value": 853.0,
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total amount - tax amount",
+        "page_number": 1
+      }
+    },
+    "tax_amount": {
+      "value": 63.47,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Sales Tax 8% 63.47",
+        "page_number": 1
+      }
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 916.47,
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total Due 916.47",
+        "page_number": 1
+      }
+    },
+    "cash_paid": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "change": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "line_items": [
+      {
+        "description": "01 2 346.00",
+        "quantity": 1,
+        "unit_price": 346.0,
+        "amount": 346.0
+      },
+      {
+        "description": "02 4 226.00",
+        "quantity": 1,
+        "unit_price": 226.0,
+        "amount": 226.0
+      },
+      {
+        "description": "03 FFreight AE Blake Montreal to Aerospace Metal 136.00",
+        "quantity": 1,
+        "unit_price": 136.0,
+        "amount": 136.0
+      },
+      {
+        "description": "04 wwithout notice Lead-time is a mere estimate. Actual delivery may differ 8 96.00",
+        "quantity": 1,
+        "unit_price": 96.0,
+        "amount": 96.0
+      }
+    ]
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": 853.0,
+          "tax_amount": 63.47,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": 916.47,
+        "reported_value": 916.47,
+        "variance": 0.0,
+        "status": "PASS"
+      },
+      {
+        "name": "invoice_line_items_check",
+        "formula": "sum(line_item.amount)",
+        "operands": {
+          "line_items_count": 4
+        },
+        "calculated_value": 804.0,
+        "reported_value": 853.0,
+        "variance": -49.0,
+        "status": "FAIL"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": null,
+          "total_amount": 916.47
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "FAIL",
+    "issues": [
+      "invoice_line_items_check"
+    ]
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 84.02,
+    "processed_at": "2026-09-11T15:59:18.091856+00:00",
+    "processing_time_ms": 22379.93
+  }
+}

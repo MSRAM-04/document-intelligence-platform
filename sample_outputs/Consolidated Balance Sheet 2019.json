@@ -1,0 +1,107 @@
+{
+  "document_name": "Consolidated Balance Sheet 2019.pdf",
+  "document_type": "balance_sheet",
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "statement_title": {
+      "value": "CONSOLIDATED BALANCE SHEET",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CONSOLIDATED BALANCE SHEET",
+        "page_number": 1
+      }
+    },
+    "company_name": {
+      "value": "HDFC Bank Limited",
+      "confidence": 0.92,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "HDFC Bank Limited",
+        "page_number": 1
+      }
+    },
+    "period": {
+      "value": "As at March 31, 2019",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "As at March 31, 2019",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_assets": {
+      "value": 12928057065.0,
+      "confidence": 0.96,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total 12,928,057,065 11,031,86*.695",
+        "page_number": 1
+      }
+    },
+    "total_liabilities": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_equity": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_capital_and_liabilities": {
+      "value": 12928057065.0,
+      "confidence": 0.96,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total 12,928,057,065 11,031,86'.695",
+        "page_number": 1
+      }
+    },
+    "periods": [
+      "2019",
+      "2018"
+    ],
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "balance_sheet_check",
+        "formula": "total_capital_and_liabilities",
+        "operands": {
+          "total_liabilities": null,
+          "total_equity": null,
+          "total_capital_and_liabilities": 12928057065.0
+        },
+        "calculated_value": 12928057065.0,
+        "reported_value": 12928057065.0,
+        "variance": 0.0,
+        "status": "PASS"
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 81.68,
+    "processed_at": "2026-09-11T16:04:06.027395+00:00",
+    "processing_time_ms": 24021.59
+  }
+}

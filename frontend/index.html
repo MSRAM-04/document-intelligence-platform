@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document Intelligence Platform</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <header class="navbar">
+      <div class="brand">
+        <span class="logo">📊</span>
+        <div>
+          <h1>Document Intelligence Platform</h1>
+          <p class="tagline">OCR Parsing, Extraction & Financial Validation Engine</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <span id="health-pill" class="badge online">API Online</span>
+        <a href="/docs" target="_blank" class="api-docs-btn">Swagger Docs ↗</a>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="grid-2col">
+        <!-- Form Panel -->
+        <section class="card upload-card">
+          <div class="card-title">
+            <h2>Process Document</h2>
+            <span class="step-num">Step 1</span>
+          </div>
+          <form id="upload-form">
+            <div class="form-group">
+              <label for="document-type">Document Type</label>
+              <select id="document-type" class="form-select">
+                <option value="invoice">Invoice</option>
+                <option value="balance_sheet">Balance Sheet</option>
+                <option value="profit_and_loss">Profit & Loss</option>
+                <option value="cash_flow_statement">Cash Flow Statement</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="drop-area" for="file-input">
+                <input type="file" id="file-input" accept=".pdf,.jpg,.jpeg,.png" required />
+                <span class="drop-icon">📄</span>
+                <strong id="file-label">Select or drop document file</strong>
+                <small>PDF / JPG / PNG • Up to 3 pages</small>
+              </label>
+            </div>
+
+            <button type="submit" id="submit-btn" class="btn primary">
+              <span>🚀 Scan & Extract Data</span>
+            </button>
+            <div id="status-message" class="status-msg"></div>
+          </form>
+        </section>
+
+        <!-- Processed History List -->
+        <section class="card history-card">
+          <div class="card-title">
+            <h2>Processed Documents</h2>
+            <span id="history-count" class="count-pill">0</span>
+          </div>
+          <div id="history-list" class="history-list">
+            <p class="empty-state">No processed documents yet.</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- Result Section -->
+      <section id="result-section" class="card result-card hidden">
+        <div class="result-header">
+          <div>
+            <span class="eyebrow">EXTRACTION OUTPUT</span>
+            <h2 id="res-doc-name">Document Name</h2>
+          </div>
+          <div class="result-actions">
+            <span id="res-status-badge" class="badge">STATUS</span>
+            <button id="raw-json-btn" class="btn secondary">View Raw JSON</button>
+          </div>
+        </div>
+
+        <div id="result-content-body"></div>
+        <pre id="raw-json-display" class="json-box hidden"></pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

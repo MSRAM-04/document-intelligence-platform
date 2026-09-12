@@ -1,0 +1,119 @@
+{
+  "document_name": "Consolidated Profit & Loss 2025.pdf",
+  "document_type": "profit_and_loss",
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "statement_title": {
+      "value": "CONSOLIDATED PROFIT AND LOSS STATEMENT",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CONSOLIDATED PROFIT AND LOSS STATEMENT",
+        "page_number": 1
+      }
+    },
+    "company_name": {
+      "value": "cncore",
+      "confidence": 0.92,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "cncore",
+        "page_number": 1
+      }
+    },
+    "period": {
+      "value": "For the year ended March 31, 2025",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "For the year ended March 31, 2025",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "revenue": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "cost_of_sales": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "gross_profit": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "operating_expenses": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "operating_profit": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "tax": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "net_profit": {
+      "value": 73.44,
+      "confidence": 0.96,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Co\"solcated Net Profit tor the year before Minority Iriterest 73.440.17 65.446.50",
+        "page_number": 1
+      }
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "profit_and_loss_check",
+        "formula": "revenue - cost_of_sales - operating_expenses",
+        "operands": {
+          "revenue": null,
+          "cost_of_sales": null,
+          "gross_profit": null,
+          "operating_expenses": null
+        },
+        "calculated_value": null,
+        "reported_value": 73.44,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "NOT_APPLICABLE",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 79.66,
+    "processed_at": "2026-09-11T16:11:11.349673+00:00",
+    "processing_time_ms": 30497.72
+  }
+}

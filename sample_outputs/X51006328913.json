@@ -1,0 +1,134 @@
+{
+  "document_name": "X51006328913.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "53273500475",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CB# ' 53273500475 OzJJan/2017 10:49.25",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "vendor_name": {
+      "value": "Totzl Inclusive GST: 165.00",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Totzl Inclusive GST: 165.00",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "currency": {
+      "value": "MYR",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Currency symbol",
+        "page_number": 1
+      }
+    },
+    "subtotal": {
+      "value": 185.0,
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "SubTotal: 185.00",
+        "page_number": 1
+      }
+    },
+    "tax_amount": {
+      "value": 0.34,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "SR 155.88 0.34",
+        "page_number": 1
+      }
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "cash_paid": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "change": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": 185.0,
+          "tax_amount": 0.34,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": 185.34,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": null,
+          "total_amount": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "NOT_APPLICABLE",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 74.99,
+    "processed_at": "2026-09-11T16:01:50.464424+00:00",
+    "processing_time_ms": 9507.5
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "document_name": "Consolidated Cash Flow Statement 2026.pdf",
+  "document_type": "cash_flow_statement",
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 2,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "statement_title": {
+      "value": "CONSOLIDATED CASH FLOW STATEMENT",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CONSOLIDATED CASH FLOW STATEMENT",
+        "page_number": 1
+      }
+    },
+    "company_name": {
+      "value": "HDFC Bank Limited",
+      "confidence": 0.92,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "HDFC Bank",
+        "page_number": 1
+      }
+    },
+    "period": {
+      "value": "For the year ended Marcn 31, 2026",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "For the year ended Marcn 31, 2026",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": "INR",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "INR",
+        "page_number": 1
+      }
+    },
+    "operating_cash_flow": {
+      "value": 76025.97,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash flows from operating activities: | Consolidated Profit atter tax and minority interest 76,025.97 70.792.25",
+        "page_number": 1
+      }
+    },
+    "investing_cash_flow": {
+      "value": 3889.97,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash flows from investing activities: | Purchase of fixed assets (3,889.97) (4.075.89)",
+        "page_number": 1
+      }
+    },
+    "financing_cash_flow": {
+      "value": 2331.21,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash flows from financing activities: | Increase In minority interest (including issue of ESOPs by subsidiaries) 2,331.21 2,382.88",
+        "page_number": 1
+      }
+    },
+    "opening_cash": {
+      "value": 249947.9,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash and cash equivalents at the beginning of the year 249,947.90 228,834.51",
+        "page_number": 1
+      }
+    },
+    "net_change_in_cash": {
+      "value": 113506.38,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Net cash flows from operating activities 113,506.38 127,241.84",
+        "page_number": 1
+      }
+    },
+    "closing_cash": {
+      "value": 311926.05,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash and cash equivalents at the end of the year 311,926.05 249,947.90",
+        "page_number": 1
+      }
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "cash_flow_change_check",
+        "formula": "operating_cash_flow + investing_cash_flow + financing_cash_flow",
+        "operands": {
+          "operating_cash_flow": 76025.97,
+          "investing_cash_flow": 3889.97,
+          "financing_cash_flow": 2331.21
+        },
+        "calculated_value": 113506.38,
+        "reported_value": 113506.38,
+        "variance": 0.0,
+        "status": "PASS"
+      },
+      {
+        "name": "cash_flow_reconciliation_check",
+        "formula": "opening_cash + net_change_in_cash",
+        "operands": {
+          "opening_cash": 249947.9,
+          "net_change_in_cash": 113506.38
+        },
+        "calculated_value": 363454.28,
+        "reported_value": 311926.05,
+        "variance": 51528.23,
+        "status": "FAIL"
+      }
+    ],
+    "overall_status": "FAIL",
+    "issues": [
+      "cash_flow_reconciliation_check"
+    ]
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 84.49,
+    "processed_at": "2026-09-11T16:18:25.084967+00:00",
+    "processing_time_ms": 50357.31
+  }
+}

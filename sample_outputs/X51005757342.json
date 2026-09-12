@@ -1,0 +1,142 @@
+{
+  "document_name": "X51005757342.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "3i80304",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "3i80304",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": "2018-03-23",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "23-03-18 '6;43 SHO 1 2J86 11 Ro0011172 1",
+        "page_number": 1
+      }
+    },
+    "vendor_name": {
+      "value": "MR . D.LY. (M) SdN BHD",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "MR . D.LY. (M) SdN BHD",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "currency": {
+      "value": "MYR",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Currency symbol",
+        "page_number": 1
+      }
+    },
+    "subtotal": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "tax_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 100.0,
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CASH RM 100 . 00",
+        "page_number": 1
+      }
+    },
+    "cash_paid": {
+      "value": 100.0,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CASH RM 100 . 00",
+        "page_number": 1
+      }
+    },
+    "change": {
+      "value": 93.8,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CHAnGE RM 93. 80",
+        "page_number": 1
+      }
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": null,
+          "tax_amount": null,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": null,
+        "reported_value": 100.0,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": 100.0,
+          "total_amount": 100.0
+        },
+        "calculated_value": 0.0,
+        "reported_value": 93.8,
+        "variance": -93.8,
+        "status": "FAIL"
+      }
+    ],
+    "overall_status": "FAIL",
+    "issues": [
+      "invoice_cash_change_check"
+    ]
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 60.95,
+    "processed_at": "2026-09-11T16:01:28.507945+00:00",
+    "processing_time_ms": 11088.31
+  }
+}

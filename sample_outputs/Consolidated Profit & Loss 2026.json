@@ -1,0 +1,128 @@
+{
+  "document_name": "Consolidated Profit & Loss 2026.pdf",
+  "document_type": "profit_and_loss",
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "statement_title": {
+      "value": "CONSOLIDATED PROFIT AND LOSS STATEMENT",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CONSOLIDATED PROFIT AND LOSS STATEMENT",
+        "page_number": 1
+      }
+    },
+    "company_name": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "period": {
+      "value": "For the year ended March 31, 2026 n crore)",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "For the year ended March 31, 2026 n crore)",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": "INR",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "INR",
+        "page_number": 1
+      }
+    },
+    "revenue": {
+      "value": 495462.81,
+      "confidence": 0.96,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total 495,462.81 470,915.93",
+        "page_number": 1
+      }
+    },
+    "cost_of_sales": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "gross_profit": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "operating_expenses": {
+      "value": 181173.91,
+      "confidence": 0.92,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Operating expenses 16 181,173.91 176,605.07",
+        "page_number": 1
+      }
+    },
+    "operating_profit": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "tax": {
+      "value": -9.0,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Provisions and contingencies 18 (9) 49.578.21 36,976.49",
+        "page_number": 1
+      }
+    },
+    "net_profit": {
+      "value": 79219.46,
+      "confidence": 0.96,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Consolidated Net Profit for the year before Minority Interest 79,219.46 73.440.17",
+        "page_number": 1
+      }
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "profit_and_loss_check",
+        "formula": "revenue - operating_expenses",
+        "operands": {
+          "revenue": 495462.81,
+          "cost_of_sales": null,
+          "gross_profit": null,
+          "operating_expenses": 181173.91
+        },
+        "calculated_value": 79219.46,
+        "reported_value": 79219.46,
+        "variance": 0.0,
+        "status": "PASS"
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 81.96,
+    "processed_at": "2026-09-11T16:11:42.899391+00:00",
+    "processing_time_ms": 31129.18
+  }
+}

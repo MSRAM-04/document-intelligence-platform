@@ -1,0 +1,136 @@
+{
+  "document_name": "Consolidated Cash Flow Statement 2018.pdf",
+  "document_type": "cash_flow_statement",
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 2,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "statement_title": {
+      "value": "CONSOLIDATED CASH FLOW STATEMENT",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CONSOLIDATED CASH FLOW STATEMENT",
+        "page_number": 1
+      }
+    },
+    "company_name": {
+      "value": "HDFC Bank Limited",
+      "confidence": 0.92,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "HDFC BANK",
+        "page_number": 1
+      }
+    },
+    "period": {
+      "value": "For the year ended March 31, 2018",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "For the year ended March 31, 2018",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "USD",
+        "page_number": 1
+      }
+    },
+    "operating_cash_flow": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "investing_cash_flow": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "financing_cash_flow": {
+      "value": 666553.0,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash flows from financing activities | Increase in minority interest 666,553 818,605",
+        "page_number": 1
+      }
+    },
+    "opening_cash": {
+      "value": 493111196.0,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash and cash equivalents as at April 1st 493,111,196 390,688,815",
+        "page_number": 1
+      }
+    },
+    "net_change_in_cash": {
+      "value": 737504366.0,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Net increase in cash and cash equivalents 737,504,366 102,422,381",
+        "page_number": 1
+      }
+    },
+    "closing_cash": {
+      "value": 1230615562.0,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash and cash equivalents as at March 31st 1,230,615,562 493,111,196",
+        "page_number": 1
+      }
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "cash_flow_change_check",
+        "formula": "operating_cash_flow + investing_cash_flow + financing_cash_flow",
+        "operands": {
+          "operating_cash_flow": null,
+          "investing_cash_flow": null,
+          "financing_cash_flow": 666553.0
+        },
+        "calculated_value": null,
+        "reported_value": 737504366.0,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      },
+      {
+        "name": "cash_flow_reconciliation_check",
+        "formula": "opening_cash + net_change_in_cash",
+        "operands": {
+          "opening_cash": 493111196.0,
+          "net_change_in_cash": 737504366.0
+        },
+        "calculated_value": 1230615562.0,
+        "reported_value": 1230615562.0,
+        "variance": 0.0,
+        "status": "PASS"
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 83.06,
+    "processed_at": "2026-09-11T16:13:18.612494+00:00",
+    "processing_time_ms": 48906.41
+  }
+}

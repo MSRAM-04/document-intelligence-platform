@@ -1,0 +1,149 @@
+{
+  "document_name": "X51005361895.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "45600",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "IJOK 45600 KUALA BEEANGORAYA",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": "2018-01-25",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "25/01/2018 1.22,S6PM",
+        "page_number": 1
+      }
+    },
+    "vendor_name": {
+      "value": "Total Includes GST 6% 9.00",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total Includes GST 6% 9.00",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": "'s_Pavment",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Customer's_Pavment",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "subtotal": {
+      "value": 8.49,
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "SR 8.49 0.51",
+        "page_number": 1
+      }
+    },
+    "tax_amount": {
+      "value": 0.51,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "SR 8.49 0.51",
+        "page_number": 1
+      }
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 50.0,
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash 50.00",
+        "page_number": 1
+      }
+    },
+    "cash_paid": {
+      "value": 50.0,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash 50.00",
+        "page_number": 1
+      }
+    },
+    "change": {
+      "value": 41.0,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Change 41.00",
+        "page_number": 1
+      }
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": 8.49,
+          "tax_amount": 0.51,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": 9.0,
+        "reported_value": 50.0,
+        "variance": -41.0,
+        "status": "FAIL"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": 50.0,
+          "total_amount": 50.0
+        },
+        "calculated_value": 0.0,
+        "reported_value": 41.0,
+        "variance": -41.0,
+        "status": "FAIL"
+      }
+    ],
+    "overall_status": "FAIL",
+    "issues": [
+      "invoice_total_check",
+      "invoice_cash_change_check"
+    ]
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 81.21,
+    "processed_at": "2026-09-11T16:00:56.429385+00:00",
+    "processing_time_ms": 11026.97
+  }
+}

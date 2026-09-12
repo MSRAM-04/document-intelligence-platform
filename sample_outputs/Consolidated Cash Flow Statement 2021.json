@@ -1,0 +1,133 @@
+{
+  "document_name": "Consolidated Cash Flow Statement 2021.pdf",
+  "document_type": "cash_flow_statement",
+  "file_validation": {
+    "file_type": "application/pdf",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "statement_title": {
+      "value": "CONSOLIDATED CASH FLOW STATEMENT",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "CONSOLIDATED CASH FLOW STATEMENT",
+        "page_number": 1
+      }
+    },
+    "company_name": {
+      "value": "Year ended Year ended",
+      "confidence": 0.92,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Year ended Year ended",
+        "page_number": 1
+      }
+    },
+    "period": {
+      "value": "For the year ended March 31, 2021",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "For the year ended March 31, 2021",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "USD",
+        "page_number": 1
+      }
+    },
+    "operating_cash_flow": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "investing_cash_flow": {
+      "value": 16808851.0,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Net cash flow used in investing activities (16,808,851) (16,169,244)",
+        "page_number": 1
+      }
+    },
+    "financing_cash_flow": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "opening_cash": {
+      "value": 879401119.0,
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash and cash equivalents as at April 1st 879,401,119 818,176,423",
+        "page_number": 1
+      }
+    },
+    "net_change_in_cash": {
+      "value": 424764563.0,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Net cash flow from / (used in) operating activities 424,764,563 (168,690,920)",
+        "page_number": 1
+      }
+    },
+    "closing_cash": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "cash_flow_change_check",
+        "formula": "operating_cash_flow + investing_cash_flow + financing_cash_flow",
+        "operands": {
+          "operating_cash_flow": null,
+          "investing_cash_flow": 16808851.0,
+          "financing_cash_flow": null
+        },
+        "calculated_value": null,
+        "reported_value": 424764563.0,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      },
+      {
+        "name": "cash_flow_reconciliation_check",
+        "formula": "opening_cash + net_change_in_cash",
+        "operands": {
+          "opening_cash": 879401119.0,
+          "net_change_in_cash": 424764563.0
+        },
+        "calculated_value": 1304165682.0,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "NOT_APPLICABLE",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 78.17,
+    "processed_at": "2026-09-11T16:15:22.948862+00:00",
+    "processing_time_ms": 28535.07
+  }
+}

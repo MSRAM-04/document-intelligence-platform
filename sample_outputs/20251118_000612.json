@@ -1,0 +1,134 @@
+{
+  "document_name": "20251118_000612.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "Scwery2618331",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "12B,SHIB DEY LANE B), Scwery2618331 Modeirerzs of Payment",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "vendor_name": {
+      "value": "DLNo T9BFJPK56SIN1ZS Sales Man Market",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "DLNo T9BFJPK56SIN1ZS Sales Man Market",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": ") Terms of Delivery",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Luxmi Narayan Bhandar 2 Buyer (Bill to) Terms of Delivery",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": "INR",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Currency symbol",
+        "page_number": 1
+      }
+    },
+    "subtotal": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "tax_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 6816.17,
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Total: 6,816.171 523.36 523 .361,046.72",
+        "page_number": 1
+      }
+    },
+    "cash_paid": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "change": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": null,
+          "tax_amount": null,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": null,
+        "reported_value": 6816.17,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": null,
+          "total_amount": 6816.17
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "NOT_APPLICABLE",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 69.46,
+    "processed_at": "2026-09-11T15:58:07.540924+00:00",
+    "processing_time_ms": 41815.91
+  }
+}

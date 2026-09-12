@@ -1,0 +1,153 @@
+{
+  "document_name": "batch3-1354.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "10102028",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "10102028 292539 Jun 24 2021 50001506",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": "Jan 06 2022",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "DATE: Jan 06 2022",
+        "page_number": 1
+      }
+    },
+    "vendor_name": {
+      "value": "A.E. Blake Sales Ltd. Tel.",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "A.E. Blake Sales Ltd. Tel. 416 431 0440",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": "/ BON D'ACHAT CLIENT/ DATE COMMANDEI COMMANDE AEB/",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "COMPTE CLIENT/ BON D'ACHAT CLIENT/ DATE COMMANDEI COMMANDE AEB/",
+        "page_number": 1
+      }
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "subtotal": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "tax_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 1274.64,
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Merci Thank you Votre contact Your contact: DRAKE Total: $ 1,274.64",
+        "page_number": 1
+      }
+    },
+    "cash_paid": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "change": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "line_items": [
+      {
+        "description": "BC",
+        "quantity": 1,
+        "unit_price": 277.0,
+        "amount": 277.0
+      },
+      {
+        "description": "BC",
+        "quantity": 1,
+        "unit_price": 277.0,
+        "amount": 277.0
+      },
+      {
+        "description": "Jan 06",
+        "quantity": 1,
+        "unit_price": 202.0,
+        "amount": 202.0
+      }
+    ]
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": null,
+          "tax_amount": null,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": null,
+        "reported_value": 1274.64,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": null,
+          "total_amount": 1274.64
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "NOT_APPLICABLE",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 83.9,
+    "processed_at": "2026-09-11T15:59:46.764263+00:00",
+    "processing_time_ms": 28500.4
+  }
+}

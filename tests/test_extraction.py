@@ -1,0 +1,32 @@
+from app.services.extraction_service import extract_document
+
+
+def test_invoice_layout_values_are_extracted_without_tax_rate():
+    text = """Subtotal $135.00 Sales Tax 8% $12.48 Shipping and Handling $10.00 Total Due $157.48 Invoice Details: Invoice #: 6825 Invoice date: Nov 03, 2022"""
+    data = extract_document("invoice", text, [text])
+    assert data["invoice_number"]["value"] == "6825"
+    assert data["invoice_date"]["value"] == "2022-11-03"
+    assert data["subtotal"]["value"] == 135.0
+    assert data["tax_amount"]["value"] == 12.48
+    assert data["total_amount"]["value"] == 157.48
+
+
+def test_receipt_style_invoice_extracts_date_gst_total_and_change():
+    text = """99 SPEED MART S/B (519537-X)
+INVOICE NO : 18311/102/T0395
+07:44PM 566890 17-02-18
+489 TIGER BEER CAN 4*6*320M RM108.50 S
+Total Sales (Inclusive GST) RM 108.50
+CASH RM 150.00
+CHANGE RM 41.50
+GST Summary Amount(RM) Tax(RM)
+S = 6% 102.36 6.14"""
+    data = extract_document("invoice", text, [text])
+    assert data["invoice_number"]["value"] == "18311/102/T0395"
+    assert data["invoice_date"]["value"] == "2018-02-17"
+    assert data["currency"]["value"] == "MYR"
+    assert data["subtotal"]["value"] == 102.36
+    assert data["tax_amount"]["value"] == 6.14
+    assert data["total_amount"]["value"] == 108.50
+    assert data["cash_paid"]["value"] == 150.00
+    assert data["change"]["value"] == 41.50

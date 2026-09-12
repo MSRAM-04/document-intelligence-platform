@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ledger-lens
+    env: python
+    buildCommand: pip install -r requirements.txt && apt-get update && apt-get install -y tesseract-ocr
+    startCommand: uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_PATH
+        value: /var/data/documents.db
+      - key: MAX_FILE_SIZE_MB
+        value: "20"
+      - key: OCR_LANGUAGE
+        value: eng
+    disk:
+      name: ledger-lens-data
+      mountPath: /var/data
+      sizeGB: 1

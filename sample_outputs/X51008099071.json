@@ -1,0 +1,137 @@
+{
+  "document_name": "X51008099071.jpg",
+  "document_type": "invoice",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "processing_status": "PASS",
+  "extracted_data": {
+    "invoice_number": {
+      "value": "01000339450",
+      "confidence": 0.98,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Invoice number ; 01000339450",
+        "page_number": 1
+      }
+    },
+    "invoice_date": {
+      "value": "2018-06-20",
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "20/06/18 00: 05 90554 01 4145 331",
+        "page_number": 1
+      }
+    },
+    "vendor_name": {
+      "value": "LEONG HENG SHELL SERVICE STATION",
+      "confidence": 0.9,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "LEONG HENG SHELL SERVICE STATION",
+        "page_number": 1
+      }
+    },
+    "customer_name": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "currency": {
+      "value": "MYR",
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Currency symbol",
+        "page_number": 1
+      }
+    },
+    "subtotal": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "tax_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "discount": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "total_amount": {
+      "value": 50.0,
+      "confidence": 0.99,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash RM 50 . 00",
+        "page_number": 1
+      }
+    },
+    "cash_paid": {
+      "value": 50.0,
+      "confidence": 0.95,
+      "page_number": 1,
+      "evidence": {
+        "source_text": "Cash RM 50 . 00",
+        "page_number": 1
+      }
+    },
+    "change": {
+      "value": null,
+      "confidence": 0.0,
+      "page_number": null,
+      "evidence": null
+    },
+    "line_items": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount + shipping_and_handling - discount",
+        "operands": {
+          "subtotal": null,
+          "tax_amount": null,
+          "shipping_and_handling": 0.0,
+          "discount": 0.0
+        },
+        "calculated_value": null,
+        "reported_value": 50.0,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      },
+      {
+        "name": "invoice_cash_change_check",
+        "formula": "cash_paid - total_amount",
+        "operands": {
+          "cash_paid": 50.0,
+          "total_amount": 50.0
+        },
+        "calculated_value": 0.0,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE"
+      }
+    ],
+    "overall_status": "NOT_APPLICABLE",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "ocr_confidence": 73.45,
+    "processed_at": "2026-09-11T16:02:31.042868+00:00",
+    "processing_time_ms": 10477.73
+  }
+}
