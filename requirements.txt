@@ -7,6 +7,5 @@ PyMuPDF==1.25.3
 Pillow==11.1.0
 pytesseract==0.3.13
 easyocr==1.7.2
-rapidocr_onnxruntime==1.4.4
 pytest==8.3.4
 httpx==0.28.1
