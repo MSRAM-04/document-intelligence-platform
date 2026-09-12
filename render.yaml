@@ -15,6 +15,6 @@ services:
       - key: PYTHON_VERSION
         value: 3.12.10
     disk:
-      name: ledger-lens-data
+      name: document-intelligence-platform-data
       mountPath: /var/data
       sizeGB: 1
