@@ -12,8 +12,6 @@ services:
         value: "20"
       - key: OCR_LANGUAGE
         value: eng
-      - key: OCR_ENGINE
-        value: tesseract
       - key: PYTHON_VERSION
         value: 3.12.10
     disk:

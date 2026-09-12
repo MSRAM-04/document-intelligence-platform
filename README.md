@@ -12,9 +12,9 @@ The application is a single Render web service, so the frontend and backend base
 
 | Required item | URL / value |
 |---|---|
-| Deployed application / frontend URL | `https://document-intelligence-platform.onrender.com/` |
-| Deployed backend API base URL | `https://document-intelligence-platform.onrender.com/api/v1` |
-| Swagger/OpenAPI URL | `https://document-intelligence-platform.onrender.com/docs` |
+| Deployed application / frontend URL | `https://document-intelligence-platform-wccy.onrender.com/` |
+| Deployed backend API base URL | `https://document-intelligence-platform-wccy.onrender.com/api/v1` |
+| Swagger/OpenAPI URL | `https://document-intelligence-platform-wccy.onrender.com/docs` |
 | Public GitHub repository | `https://github.com/MSRAM-04/document-intelligence-platform` |
 | Deployment platform | Render Web Service |
 | Solution presentation | `docs/solution-presentation.pptx` |
@@ -59,7 +59,7 @@ To ensure high stability and eliminate complex native engine installations (like
 ## Technology Stack and Design Choices
 
 - **Backend**: Python 3.12, FastAPI, Pydantic, Uvicorn, SQLite3, repository pattern. FastAPI provides typed request handling and generated OpenAPI documentation with minimal operational overhead.
-- **OCR & Vision**: EasyOCR (PyTorch / CRAFT / ResNet), PyMuPDF (`fitz`), Pillow (`PIL`), OpenCV.
+- **OCR & Vision**: Tesseract via `pytesseract`, PyMuPDF (`fitz`), and Pillow (`PIL`). Tesseract is installed by the Render build command for predictable CPU deployment.
 - **Frontend**: HTML5, vanilla CSS, vanilla JavaScript. This keeps the dashboard lightweight and deployable from the same service as the API.
 - **Testing**: Pytest, FastAPI TestClient.
 
@@ -131,7 +131,7 @@ The upload response includes `extracted_data`, `validation`, `file_validation`, 
 
 ## OCR, Models, and Confidence
 
-PDF pages are rendered with PyMuPDF and images are read with Pillow. The deployed Render configuration uses Tesseract OCR because it is predictable on small instances; EasyOCR remains available by setting `OCR_ENGINE=easyocr`. No paid external API or LLM is required. The extraction layer applies document-specific parsing rules over OCR text and returns field-level confidence and source evidence where available. Confidence is an extraction signal, not a guarantee of accounting correctness; the separate financial validation checks provide numerical consistency signals.
+PDF pages are rendered with PyMuPDF and images are read with Pillow. The deployed Render configuration uses Tesseract OCR because it is predictable on small instances and does not require a model download at request time. No paid external API or LLM is required. The extraction layer applies document-specific parsing rules over OCR text and returns field-level confidence and source evidence where available. Confidence is an extraction signal, not a guarantee of accounting correctness; the separate financial validation checks provide numerical consistency signals.
 
 For a manually created Render service, use this exact build command so the Tesseract executable is installed:
 
