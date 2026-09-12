@@ -60,3 +60,24 @@ Total Due 916.47"""
     assert data["subtotal"]["value"] == 804.0
     assert data["tax_amount"]["value"] == 63.47
     assert data["total_amount"]["value"] == 916.47
+
+
+def test_sparse_work_order_invoice_extracts_total_without_subtotal():
+    text = """Invoice
+Meld #298839
+BEYOND DIGITAL IMAGING
+36 Apple Creek Blvd.
+MARKHAM, L3R 4Y4
+Total: $5257
+From
+MARKHAM
+Invoice date
+Sept. 5, 2023
+No. Description Quantity Rate Cost Amount
+5991 3M SJ3550 Dual Lock Fastener 9 $367 $367 $3303"""
+    data = extract_document("invoice", text, [text])
+
+    assert data["invoice_number"]["value"] == "298839"
+    assert data["invoice_date"]["value"] == "2023-09-05"
+    assert data["vendor_name"]["value"] == "BEYOND DIGITAL IMAGING"
+    assert data["total_amount"]["value"] == 5257.0

@@ -225,11 +225,12 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
             except ValueError: pass
 
     if not date_val:
-        m_date = re.search(r'(?:invoice\s*date|date)[:\s]*([\d]{1,2}[-/\.][A-Za-z0-9]{2,4}[-/\.]\d{2,4}|[A-Za-z]+\s+\d{1,2},?\s+\d{4})', full_text, re.I)
+        m_date = re.search(r'(?:invoice\s*date|date)[:\s]*([\d]{1,2}[-/\.][A-Za-z0-9]{2,4}[-/\.]\d{2,4}|[A-Za-z]+\.?\s+\d{1,2},?\s+\d{4})', full_text, re.I)
         if m_date:
             raw_d = m_date.group(1).strip()
+            raw_d = re.sub(r"\bSept\.?\b", "Sep", raw_d, flags=re.IGNORECASE)
             date_ev = m_date.group(0)
-            for fmt in ["%m/%d/%Y", "%d/%m/%Y", "%m/%d/%y", "%d/%m/%y", "%d-%b-%Y", "%Y-%m-%d", "%B %d, %Y", "%b %d, %Y"]:
+            for fmt in ["%m/%d/%Y", "%d/%m/%Y", "%m/%d/%y", "%d/%m/%y", "%d-%b-%Y", "%Y-%m-%d", "%B %d, %Y", "%b %d, %Y", "%B. %d, %Y", "%b. %d, %Y"]:
                 try:
                     date_val = datetime.strptime(raw_d, fmt).strftime("%Y-%m-%d")
                     break
@@ -283,7 +284,7 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
         cands = []
         for line in lines[:20]:
             l_clean = line.strip()
-            if not any(fw in l_clean.lower() for fw in forbidden) and len(l_clean) > 2 and not re.match(r'^\d+$', l_clean):
+            if not any(fw in l_clean.lower() for fw in forbidden) and len(l_clean) > 2 and not re.match(r'^\d+$', l_clean) and not re.search(r'#\s*[A-Z0-9]+|\b(total|invoice)\b', l_clean, re.I):
                 cands.append((l_clean, line))
         
         for cand, line in cands:
@@ -428,7 +429,7 @@ def _extract_invoice(text: str, pages: list[str]) -> dict:
         for line in lines:
             l_fix = re.sub(r'(\d)\s*[.]\s*(\d{2})', r'\1.\2', line.strip())
             l_fix = re.sub(r'(\d)\s+(\d{2})$', r'\1.\2', l_fix)
-            m_tot = re.search(r'(?:grand\s*total|total\s*due|total\s*amount|net\s*total|amount\s*due|total\s*inclusive\s*of\s*gst|total\s+incl(?:usive)?[.]?\s*(?:of\s*)?gst|\btotal\b|cash)[:\s]*(?:rm|myr|inr|usd|\$)?\s*([\d,]+\.\d{2})', l_fix, re.I)
+            m_tot = re.search(r'(?:grand\s*total|total\s*due|total\s*amount|net\s*total|amount\s*due|total\s*inclusive\s*of\s*gst|total\s+incl(?:usive)?[.]?\s*(?:of\s*)?gst|\btotal\b|cash)[:\s]*(?:rm|myr|inr|usd|\$)?\s*([\d,]+(?:\.\d{1,2})?)', l_fix, re.I)
             if m_tot:
                 try:
                     v = float(m_tot.group(1).replace(',', ''))

@@ -8,7 +8,7 @@ from app.services.ocr_service import extract_text
 from app.services.document_validation_service import validate_file
 
 ANCHOR_FIELDS = {
-    "invoice": ("total_amount", "subtotal", "invoice_number"),
+    "invoice": ("total_amount", "invoice_number"),
     "balance_sheet": ("total_assets", "total_capital_and_liabilities"),
     "profit_and_loss": ("revenue", "gross_profit", "net_profit"),
     "cash_flow_statement": ("operating_cash_flow", "net_change_in_cash"),
